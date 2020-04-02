@@ -8,6 +8,16 @@ var URLrequest = 'https://bhattaneri.github.io/comp1073-Lab_4/Lab4/main.json';
 //    console.log(strangeproduct);
 //    strangeProducts(strangeproduct);
 //};
+function strangeProducts(url,callback){
+    fetch(url).then(function(response){
+        return response.json();
+        }).then(function(json){
+        let jsonObj=json;
+        strangeProducts(jsonObj);     
+    }).catch(function(err){
+        console.log('Fetch Problem' +err.message);
+    });
+};
 
 function strangeProducts(jsonObj) {
 
@@ -33,12 +43,5 @@ function strangeProducts(jsonObj) {
     }
 };
 
-function information(URLrequest,callback){
-    fetch(url).then(function(response){
-        response.json().then(function(json){
-        callback(request.response);
-        });
-    });
-}
 
 
